@@ -1,7 +1,7 @@
 .App{
   margin: 0;
-  padding:50;
-  background-color: #f5dddf;
+  padding:50px;
+  background-color: rgb(252, 216, 221);
   font-weight: 500;
   font-size:1.2rem;
   height: 100vh;
