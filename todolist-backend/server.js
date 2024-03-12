@@ -1,0 +1,68 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const Cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config()
+
+const {
+
+    getTodos,
+    createTodos,
+    updateTodos,
+    deleteTodos,
+
+} = require('./controllers/todoController');
+
+//....................................................................
+//App config 
+
+const app = express();
+
+const port = process.env.PORT || 8000
+
+const connectionURl = process.env.MONGO_URI
+//....................................................................
+
+
+//....................................................................
+// Middlewares
+
+// convert to json
+
+app.use(express.json())
+
+app.use(Cors())
+//....................................................................
+
+// DB configuration
+
+mongoose.connect(connectionURl)
+.then(() =>{
+    app.listen(port, () => console.log(`Running on port ${port}`))
+})
+.catch((err) => {
+    console.log(err)
+});
+//....................................................................
+
+// API Endpoints
+
+//Get todos list 
+app.get('/todos', getTodos)
+
+     
+//Create a new Todo
+app.post('./todos', createTodos)
+
+
+//Update a Todo
+app.put('./todos:id', updateTodos)
+
+
+//Delete a Todo 
+app.delete('./todos:id', deleteTodos)
+
+//....................................................................
+
+
