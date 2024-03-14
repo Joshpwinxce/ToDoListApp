@@ -8,9 +8,9 @@ dotenv.config()
 const {
 
     getTodos,
-    createTodos,
-    updateTodos,
-    deleteTodos,
+    createTodo,
+    updateTodo,
+    deleteTodo,
 
 } = require('./controllers/todoController');
 
@@ -53,15 +53,15 @@ app.get('/todos', getTodos)
 
      
 //Create a new Todo
-app.post('./todos', createTodos)
+app.post('./todos', createTodo)
 
 
 //Update a Todo
-app.put('./todos:id', updateTodos)
+app.put('./todos:id', updateTodo)
 
 
 //Delete a Todo 
-app.delete('./todos:id', deleteTodos)
+app.delete('./todos:id', deleteTodo)
 
 //....................................................................
 
