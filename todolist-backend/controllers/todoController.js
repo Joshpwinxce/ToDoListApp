@@ -1,7 +1,7 @@
-const mongoose = require('mongoose') 
+const mongoose = require("mongoose") 
 
-const Todos = require('../dbtodos')
-const dbtodos = require('../dbtodos')
+const Todos = require("../dbtodos")
+//const dbtodos = require('../dbtodos')
 
 //....................................................................
 //Get Todos List 
@@ -30,7 +30,7 @@ const createTodo = async (req, res) => {
 
     try {
         
-        const newTodo = await Todos.create(dbTodos);
+        const newTodo = await Todos.create(dbTodo);
         res.status(201).send(newTodo);
 
     } catch (error) {
@@ -56,7 +56,7 @@ const updateTodo = async (req, res) => {
 
     if(!mongoose.Types.ObjectId.isValid(id)){
 
-        return res.status(404).send(`There is no todo with the id ${id}`)
+        return res.status(404).send(`There is no todo with the id of ${id}`)
     }
 
     const todoID = {_id: id};
@@ -65,7 +65,7 @@ const updateTodo = async (req, res) => {
         const updateTodo = await Todos.findOneAndUpdate(todoID, update);
 
         if(!updateTodo){
-            return res.status(404).send(`There is no todo with the id ${id}`)
+            return res.status(404).send(`There is no todo with the id of ${id}`)
         }
         res.status(200).send(updateTodo);
 

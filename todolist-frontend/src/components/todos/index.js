@@ -13,7 +13,7 @@ function Todo() {
   const fetchData = async () => {
 
     try{
-const response = await axios.get('./todos');
+const response = await axios.get("/todos");
 setTodos(response.data);
     }catch(err){
       console.log(err);
@@ -22,10 +22,44 @@ setTodos(response.data);
   };
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
 
-  console.log(todos, 'todos');
+  const addTodo = async (e) => {
+    e.preventDefault();
+    if(input.length === 0) return;
+
+    try {
+        const response = await axios.post("/todos", {
+            text: input,
+            completed: false,
+        });
+        // Assuming response.data is the newly added todo
+        setTodos([...todos, response.data]);
+        setInput("");
+        console.log("addedTodo");
+    } catch (err) {
+        console.error("Error adding todo:", err);
+    }
+
+  // const addTodo = async (e) => {
+  //     e.preventDefault();
+  //     if(input.length === 0) return null;
+  //     await axios.post("/todos", [
+  //       {
+  //       ...todos, 
+  //       text: input,
+  //       completed: false,
+  //     },
+  //   ]);
+
+
+    fetchData();
+    setInput("");
+    console.log("addedTodo");
+  };
+
+  console.log(todos, "todos");
 
   return  (
   
@@ -34,7 +68,7 @@ setTodos(response.data);
     <h2>List of Todo's </h2>
 
     {/* Form Components */}
-    <Form input={input} setInput={setInput}/>
+    <Form input={input} setInput={setInput} addTodo={addTodo}/>
 
     {/* Todo-List */}
 

@@ -12,7 +12,7 @@ const {
     updateTodo,
     deleteTodo,
 
-} = require('./controllers/todoController');
+} = require("./controllers/todoController");
 
 //....................................................................
 //App config 
@@ -53,15 +53,15 @@ app.get('/todos', getTodos)
 
      
 //Create a new Todo
-app.post('./todos', createTodo)
+app.post('/todos', createTodo)
 
 
 //Update a Todo
-app.put('./todos:id', updateTodo)
+app.put('/todos:id', updateTodo)
 
 
 //Delete a Todo 
-app.delete('./todos:id', deleteTodo)
+app.delete('/todos:id', deleteTodo)
 
 //....................................................................
 

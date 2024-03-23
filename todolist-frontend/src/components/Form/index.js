@@ -2,13 +2,15 @@ import React from 'react';
 import { FormContainer, Input, Button } from './style';
 
 
-function Form({input, setInput}) {
+function Form({input, setInput, addTodo}) {
   return (
     <FormContainer>
-      <Input value={input} onChange={(e) => setInput(e.target.value)} 
+      <Input 
+      value={input} 
+      onChange={(e) => setInput(e.target.value)} 
       type='text' 
       role='input' />
-      <Button type='submit'>Add</Button>
+      <Button type='submit' onClick={(e) => addTodo(e)}>Add</Button>
     </FormContainer>
   );
 }

@@ -4,12 +4,12 @@ const todoSchema = mongoose.Schema(
    
     {
         text:{
-            type:'string',
+            type: String,
             required: true
 
         },
         completed:{
-            type:'Boolean',
+            type: Boolean,
             required: true
 
         }
